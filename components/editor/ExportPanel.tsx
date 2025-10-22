@@ -59,30 +59,30 @@ export function ExportPanel() {
   };
 
   return (
-    <div className="space-y-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
-      <h3 className="text-lg font-semibold">Export Video</h3>
+    <div className="space-y-6">
+      <h3 className="text-lg font-semibold text-gray-900">Export Video</h3>
 
-      <div className="space-y-2">
-        <div className="grid grid-cols-2 gap-4 text-sm">
-          <div>
-            <p className="text-gray-600">Captions:</p>
-            <p className="font-medium">{captions.length} added</p>
+      <div className="space-y-4">
+        <div className="grid grid-cols-2 gap-4">
+          <div className="p-4 bg-gray-50 rounded-xl border border-gray-200">
+            <p className="text-xs font-medium text-gray-700 mb-1">Captions</p>
+            <p className="text-2xl font-semibold text-gray-900">{captions.length}</p>
           </div>
-          <div>
-            <p className="text-gray-600">Sound Effects:</p>
-            <p className="font-medium">{soundEffects.length} added</p>
+          <div className="p-4 bg-gray-50 rounded-xl border border-gray-200">
+            <p className="text-xs font-medium text-gray-700 mb-1">Sound Effects</p>
+            <p className="text-2xl font-semibold text-gray-900">{soundEffects.length}</p>
           </div>
         </div>
 
         {isExporting && (
-          <div className="space-y-2">
-            <div className="w-full bg-gray-200 rounded-full h-2">
+          <div className="space-y-3">
+            <div className="w-full bg-gray-200 rounded-full h-2.5">
               <div
-                className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+                className="bg-blue-600 h-2.5 rounded-full transition-all duration-300"
                 style={{ width: `${progress}%` }}
               />
             </div>
-            <p className="text-sm text-center text-gray-600">
+            <p className="text-sm text-center font-medium text-gray-700">
               Exporting... {progress}%
             </p>
           </div>
@@ -108,12 +108,21 @@ export function ExportPanel() {
         </Button>
       </div>
 
-      <div className="text-xs text-gray-500 space-y-1">
-        <p>Export settings:</p>
-        <ul className="list-disc list-inside space-y-1">
-          <li>Format: MP4 (H.264)</li>
-          <li>Resolution: Original</li>
-          <li>Optimized for social media</li>
+      <div className="p-4 bg-gray-50 rounded-xl border border-gray-200">
+        <p className="text-sm font-semibold text-gray-900 mb-2">Export Settings</p>
+        <ul className="space-y-1.5 text-sm text-gray-700">
+          <li className="flex items-center gap-2">
+            <span className="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+            Format: MP4 (H.264)
+          </li>
+          <li className="flex items-center gap-2">
+            <span className="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+            Resolution: Original
+          </li>
+          <li className="flex items-center gap-2">
+            <span className="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+            Optimized for social media
+          </li>
         </ul>
       </div>
     </div>

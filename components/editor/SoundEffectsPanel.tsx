@@ -54,7 +54,7 @@ export function SoundEffectsPanel() {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold">Sound Effects</h3>
+        <h3 className="text-lg font-semibold text-gray-900">Sound Effects</h3>
         <Button
           onClick={() => fileInputRef.current?.click()}
           size="sm"
@@ -74,15 +74,15 @@ export function SoundEffectsPanel() {
       </div>
 
       <div>
-        <p className="text-sm font-medium text-gray-700 mb-2">Preset Sounds</p>
+        <p className="text-sm font-medium text-gray-900 mb-3">Preset Sounds</p>
         <div className="grid grid-cols-2 gap-2">
           {PRESET_SOUNDS.map((preset) => (
             <Button
               key={preset.name}
               onClick={() => handlePresetSound(preset.name)}
-              variant="outline"
+              variant="secondary"
               size="sm"
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 justify-start"
             >
               <Volume2 className="w-4 h-4" />
               {preset.name}
@@ -91,21 +91,21 @@ export function SoundEffectsPanel() {
         </div>
       </div>
 
-      <div className="space-y-2 max-h-64 overflow-y-auto">
+      <div className="space-y-3 max-h-64 overflow-y-auto">
         {soundEffects.length === 0 ? (
-          <p className="text-sm text-gray-400 text-center py-4">
+          <p className="text-sm text-gray-600 text-center py-8">
             No sound effects added yet
           </p>
         ) : (
           soundEffects.map((effect) => (
             <div
               key={effect.id}
-              className="p-3 bg-gray-50 rounded-lg border border-gray-200 space-y-2"
+              className="p-4 bg-gray-50 rounded-xl border border-gray-200 space-y-3"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <Volume2 className="w-4 h-4 text-gray-600" />
-                  <span className="text-sm font-medium">{effect.name}</span>
+                  <Volume2 className="w-4 h-4 text-gray-700" />
+                  <span className="text-sm font-medium text-gray-900">{effect.name}</span>
                 </div>
                 <Button
                   onClick={() => removeSoundEffect(effect.id)}
@@ -118,7 +118,7 @@ export function SoundEffectsPanel() {
 
               <div className="grid grid-cols-3 gap-2">
                 <div>
-                  <label className="text-xs text-gray-600">Start (s)</label>
+                  <label className="text-xs font-medium text-gray-700 mb-1 block">Start (s)</label>
                   <input
                     type="number"
                     value={effect.startTime.toFixed(2)}
@@ -128,11 +128,11 @@ export function SoundEffectsPanel() {
                       })
                     }
                     step="0.1"
-                    className="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-2 py-1.5 text-sm text-gray-900 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
                 <div>
-                  <label className="text-xs text-gray-600">Duration (s)</label>
+                  <label className="text-xs font-medium text-gray-700 mb-1 block">Duration (s)</label>
                   <input
                     type="number"
                     value={effect.duration.toFixed(2)}
@@ -142,11 +142,11 @@ export function SoundEffectsPanel() {
                       })
                     }
                     step="0.1"
-                    className="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-2 py-1.5 text-sm text-gray-900 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
                 <div>
-                  <label className="text-xs text-gray-600">Volume</label>
+                  <label className="text-xs font-medium text-gray-700 mb-1 block">Volume</label>
                   <input
                     type="range"
                     min="0"
@@ -158,9 +158,9 @@ export function SoundEffectsPanel() {
                         volume: parseFloat(e.target.value),
                       })
                     }
-                    className="w-full mt-2"
+                    className="w-full mt-1.5"
                   />
-                  <p className="text-xs text-center text-gray-500">
+                  <p className="text-xs text-center text-gray-700 mt-1">
                     {Math.round(effect.volume * 100)}%
                   </p>
                 </div>

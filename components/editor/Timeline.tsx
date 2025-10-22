@@ -47,8 +47,8 @@ export function Timeline() {
 
   if (duration === 0) {
     return (
-      <div className="w-full h-32 bg-gray-100 rounded-lg flex items-center justify-center">
-        <p className="text-gray-400 text-sm">Timeline will appear here</p>
+      <div className="w-full h-32 bg-gray-100 rounded-xl flex items-center justify-center">
+        <p className="text-gray-600 text-sm">Timeline will appear here</p>
       </div>
     );
   }
@@ -56,15 +56,15 @@ export function Timeline() {
   const progress = (currentTime / duration) * 100;
 
   return (
-    <div className="w-full space-y-2">
-      <div className="flex justify-between text-sm text-gray-600">
+    <div className="w-full space-y-3">
+      <div className="flex justify-between text-sm font-medium text-gray-900">
         <span>{formatTime(currentTime)}</span>
         <span>{formatTime(duration)}</span>
       </div>
 
       <div
         ref={timelineRef}
-        className="relative w-full h-24 bg-gray-200 rounded-lg cursor-pointer overflow-hidden"
+        className="relative w-full h-28 bg-gray-100 rounded-xl cursor-pointer overflow-hidden border border-gray-200 hover:border-gray-300 transition-colors"
         onClick={handleTimelineClick}
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
@@ -79,11 +79,11 @@ export function Timeline() {
           return (
             <div
               key={caption.id}
-              className="absolute top-2 h-6 bg-blue-400 rounded opacity-70 hover:opacity-100 transition-opacity"
+              className="absolute top-3 h-7 bg-blue-500 rounded-lg opacity-80 hover:opacity-100 transition-all shadow-sm"
               style={{ left: `${left}%`, width: `${width}%` }}
               title={caption.text}
             >
-              <div className="px-1 text-xs text-white truncate">
+              <div className="px-2 text-xs text-white font-medium truncate leading-7">
                 {caption.text}
               </div>
             </div>
@@ -98,11 +98,11 @@ export function Timeline() {
           return (
             <div
               key={effect.id}
-              className="absolute top-10 h-6 bg-green-400 rounded opacity-70 hover:opacity-100 transition-opacity"
+              className="absolute top-12 h-7 bg-green-500 rounded-lg opacity-80 hover:opacity-100 transition-all shadow-sm"
               style={{ left: `${left}%`, width: `${width}%` }}
               title={effect.name}
             >
-              <div className="px-1 text-xs text-white truncate">
+              <div className="px-2 text-xs text-white font-medium truncate leading-7">
                 {effect.name}
               </div>
             </div>
@@ -111,20 +111,20 @@ export function Timeline() {
 
         {/* Playhead */}
         <div
-          className="absolute top-0 bottom-0 w-0.5 bg-red-500 z-10"
+          className="absolute top-0 bottom-0 w-0.5 bg-red-500 z-10 shadow-lg"
           style={{ left: `${progress}%` }}
         >
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3 h-3 bg-red-500 rounded-full" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3 h-3 bg-red-500 rounded-full shadow-md" />
         </div>
       </div>
 
-      <div className="flex gap-2 text-xs text-gray-500">
-        <div className="flex items-center gap-1">
-          <div className="w-3 h-3 bg-blue-400 rounded" />
+      <div className="flex gap-4 text-xs font-medium text-gray-700">
+        <div className="flex items-center gap-1.5">
+          <div className="w-3 h-3 bg-blue-500 rounded" />
           <span>Captions</span>
         </div>
-        <div className="flex items-center gap-1">
-          <div className="w-3 h-3 bg-green-400 rounded" />
+        <div className="flex items-center gap-1.5">
+          <div className="w-3 h-3 bg-green-500 rounded" />
           <span>Sound Effects</span>
         </div>
       </div>

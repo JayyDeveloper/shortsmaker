@@ -36,7 +36,7 @@ export function CaptionPanel() {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold">Captions</h3>
+        <h3 className="text-lg font-semibold text-gray-900">Captions</h3>
         <Button
           onClick={handleGenerateAutoCaptions}
           size="sm"
@@ -56,28 +56,28 @@ export function CaptionPanel() {
             onChange={(e) => setNewCaptionText(e.target.value)}
             onKeyPress={(e) => e.key === 'Enter' && handleAddCaption()}
             placeholder="Enter caption text..."
-            className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="flex-1 px-3 py-2.5 text-sm border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
           <Button onClick={handleAddCaption} size="sm">
             <Plus className="w-4 h-4" />
           </Button>
         </div>
 
-        <p className="text-xs text-gray-500">
+        <p className="text-xs text-gray-700">
           Caption will start at current time: {currentTime.toFixed(2)}s
         </p>
       </div>
 
-      <div className="space-y-2 max-h-64 overflow-y-auto">
+      <div className="space-y-3 max-h-64 overflow-y-auto">
         {captions.length === 0 ? (
-          <p className="text-sm text-gray-400 text-center py-4">
+          <p className="text-sm text-gray-600 text-center py-8">
             No captions added yet
           </p>
         ) : (
           captions.map((caption) => (
             <div
               key={caption.id}
-              className="p-3 bg-gray-50 rounded-lg border border-gray-200 space-y-2"
+              className="p-4 bg-gray-50 rounded-xl border border-gray-200 space-y-3"
             >
               <div className="flex items-start justify-between gap-2">
                 <textarea
@@ -85,7 +85,7 @@ export function CaptionPanel() {
                   onChange={(e) =>
                     updateCaption(caption.id, { text: e.target.value })
                   }
-                  className="flex-1 px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                  className="flex-1 px-3 py-2 text-sm text-gray-900 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
                   rows={2}
                 />
                 <Button
@@ -99,7 +99,7 @@ export function CaptionPanel() {
 
               <div className="grid grid-cols-2 gap-2">
                 <div>
-                  <label className="text-xs text-gray-600">Start (s)</label>
+                  <label className="text-xs font-medium text-gray-700 mb-1 block">Start (s)</label>
                   <input
                     type="number"
                     value={caption.startTime.toFixed(2)}
@@ -109,11 +109,11 @@ export function CaptionPanel() {
                       })
                     }
                     step="0.1"
-                    className="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-2 py-1.5 text-sm text-gray-900 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
                 <div>
-                  <label className="text-xs text-gray-600">End (s)</label>
+                  <label className="text-xs font-medium text-gray-700 mb-1 block">End (s)</label>
                   <input
                     type="number"
                     value={caption.endTime.toFixed(2)}
@@ -123,14 +123,14 @@ export function CaptionPanel() {
                       })
                     }
                     step="0.1"
-                    className="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-2 py-1.5 text-sm text-gray-900 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-3 gap-2">
                 <div>
-                  <label className="text-xs text-gray-600">Position</label>
+                  <label className="text-xs font-medium text-gray-700 mb-1 block">Position</label>
                   <select
                     value={caption.style.position}
                     onChange={(e) =>
@@ -141,7 +141,7 @@ export function CaptionPanel() {
                         },
                       })
                     }
-                    className="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-2 py-1.5 text-sm text-gray-900 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   >
                     <option value="top">Top</option>
                     <option value="center">Center</option>
@@ -149,7 +149,7 @@ export function CaptionPanel() {
                   </select>
                 </div>
                 <div>
-                  <label className="text-xs text-gray-600">Font Size</label>
+                  <label className="text-xs font-medium text-gray-700 mb-1 block">Font Size</label>
                   <input
                     type="number"
                     value={caption.style.fontSize}
@@ -161,11 +161,11 @@ export function CaptionPanel() {
                         },
                       })
                     }
-                    className="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-2 py-1.5 text-sm text-gray-900 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
                 <div>
-                  <label className="text-xs text-gray-600">Text Color</label>
+                  <label className="text-xs font-medium text-gray-700 mb-1 block">Text Color</label>
                   <input
                     type="color"
                     value={caption.style.color}
@@ -174,7 +174,7 @@ export function CaptionPanel() {
                         style: { ...caption.style, color: e.target.value },
                       })
                     }
-                    className="w-full h-8 border border-gray-300 rounded cursor-pointer"
+                    className="w-full h-9 border border-gray-300 rounded-lg cursor-pointer"
                   />
                 </div>
               </div>

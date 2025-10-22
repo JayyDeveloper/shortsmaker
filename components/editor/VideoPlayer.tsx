@@ -68,14 +68,14 @@ export function VideoPlayer() {
 
   if (!videoUrl) {
     return (
-      <div className="w-full aspect-[9/16] bg-gray-900 rounded-lg flex items-center justify-center">
-        <p className="text-gray-400">No video loaded</p>
+      <div className="w-full aspect-[9/16] bg-gray-900 rounded-xl flex items-center justify-center border border-gray-700">
+        <p className="text-gray-500 text-sm font-medium">No video loaded</p>
       </div>
     );
   }
 
   return (
-    <div className="relative w-full aspect-[9/16] bg-black rounded-lg overflow-hidden group">
+    <div className="relative w-full aspect-[9/16] bg-black rounded-xl overflow-hidden group shadow-lg">
       <video
         ref={videoRef}
         src={videoUrl}
@@ -98,19 +98,19 @@ export function VideoPlayer() {
               color: activeCaption.style.color,
               backgroundColor: activeCaption.style.backgroundColor,
             }}
-            className="inline-block px-2 py-1 rounded font-bold"
+            className="inline-block px-3 py-1.5 rounded-lg font-bold shadow-lg"
           >
             {activeCaption.text}
           </p>
         </div>
       )}
 
-      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+      <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
         <Button
           onClick={togglePlayPause}
           variant="secondary"
           size="sm"
-          className="bg-white/20 hover:bg-white/30 text-white border-0"
+          className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-0 shadow-lg"
         >
           {isPlaying ? (
             <Pause className="w-5 h-5" />
